@@ -17,11 +17,7 @@ routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddlewares);
-
 routes.put('/users', UserController.update);
-
-routes.post('/post-modules', PostModuleController.store);
-routes.get('/post-modules', PostModuleController.index);
 
 routes.get('/public-list-module', PublicListModuleController.index);
 
@@ -29,6 +25,7 @@ routes.post('/comment-module', CommentModuleController.store);
 routes.get('/comment-module', CommentModuleController.index);
 
 routes.use(authMiddlewaresAdmin);
-routes.get('/t');
+routes.post('/post-modules', PostModuleController.store);
+routes.get('/post-modules', PostModuleController.index);
 
 export default routes;

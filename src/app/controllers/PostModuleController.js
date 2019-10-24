@@ -3,19 +3,6 @@ import PostModule from '../models/PostModule';
 
 class PostModuleController {
   async index(req, res) {
-    /**
-     * Check user is admin
-     */
-    const checkUserAdmin = await User.findOne({
-      where: { id: req.userId, admin: true },
-    });
-
-    if (!checkUserAdmin) {
-      return res
-        .status(401)
-        .json({ error: 'Apenas usuários administradores podem criar modulos' });
-    }
-
     const postModule = await PostModule.findAll({
       where: { user_id: req.userId },
       order: ['id'],
@@ -34,19 +21,6 @@ class PostModuleController {
 
   async store(req, res) {
     const { name_module, description } = req.body;
-
-    /**
-     * Check user is admin
-     */
-    const checkUserAdmin = await User.findOne({
-      where: { id: req.userId, admin: true },
-    });
-
-    if (!checkUserAdmin) {
-      return res
-        .status(401)
-        .json({ error: 'Apenas usuários administradores podem criar modulos' });
-    }
 
     const postModule = await PostModule.create({
       user_id: req.userId,
