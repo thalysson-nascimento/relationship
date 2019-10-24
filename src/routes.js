@@ -7,6 +7,7 @@ import PublicListModuleController from './app/controllers/PublicListModuleContro
 import CommentModuleController from './app/controllers/CommentModuleController';
 
 import authMiddlewares from './app/middlewares/auth';
+import authMiddlewaresAdmin from './app/middlewares/authAdmin';
 
 const routes = new Router();
 
@@ -26,5 +27,8 @@ routes.get('/public-list-module', PublicListModuleController.index);
 
 routes.post('/comment-module', CommentModuleController.store);
 routes.get('/comment-module', CommentModuleController.index);
+
+routes.use(authMiddlewaresAdmin);
+routes.get('/t');
 
 export default routes;
