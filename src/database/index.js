@@ -3,10 +3,11 @@ import Sequelize from 'sequelize';
 import User from '../app/models/User';
 import PostModule from '../app/models/PostModule';
 import CommentModule from '../app/models/CommentModule';
+import DefineSystem from '../app/models/DefineSystem';
 
 import databaseConfig from '../config/database';
 
-const models = [User, PostModule, CommentModule];
+const models = [User, PostModule, CommentModule, DefineSystem];
 
 class Database {
   constructor() {
