@@ -1,11 +1,11 @@
-import { Sequelize } from 'sequelize';
+import Sequelize, { Model } from 'sequelize';
 
-class DefineSystem {
+class DefineSystem extends Model {
   static init(sequelize) {
     super.init(
       {
         name_system: Sequelize.STRING,
-        description: Sequelize.NUMBER,
+        description: Sequelize.STRING,
         user_id: Sequelize.NUMBER,
       },
       {
@@ -14,6 +14,10 @@ class DefineSystem {
     );
 
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'define_system' });
   }
 }
 

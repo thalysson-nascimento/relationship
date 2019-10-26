@@ -5,6 +5,7 @@ import SessionController from './app/controllers/SessionController';
 import PostModuleController from './app/controllers/PostModuleController';
 import PublicListModuleController from './app/controllers/PublicListModuleController';
 import CommentModuleController from './app/controllers/CommentModuleController';
+import DefineSystemController from './app/controllers/DefineSystemController';
 
 import authMiddlewares from './app/middlewares/auth';
 import authMiddlewaresAdmin from './app/middlewares/authAdmin';
@@ -27,5 +28,8 @@ routes.get('/comment-module', CommentModuleController.index);
 routes.use(authMiddlewaresAdmin);
 routes.post('/post-modules', PostModuleController.store);
 routes.get('/post-modules', PostModuleController.index);
+
+routes.post('/define-system', DefineSystemController.store);
+routes.get('/define-system', DefineSystemController.index);
 
 export default routes;
